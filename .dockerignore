@@ -1,0 +1,71 @@
+# -*-mode:gitignore-*- vim:ft=gitignore
+
+# Git
+.gitignore
+.git/
+.github/
+.gitlab/
+
+# IDE
+.vscode/
+.idea/
+
+# CI
+renovate.json5
+
+# Log
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test
+.coverage
+.coverage.*
+coverage.xml
+nosetests.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Misc
+docs/
+
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+## C Objects
+*.so
+
+## PyInstaller
+*.manifest
+*.spec
+
+## IPython
+profile_default/
+ipython_config.py
+
+## pyenv
+.python-version
+
+## mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+## Django
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+## Flask
+instance/
+.webassets-cache
+
+## Scrapy
+.scrapy
+
+## Jupyter Notebook
+.ipynb_checkpoints
