@@ -1,15 +1,17 @@
 # -*-mode:yaml-*- vim:ft=yaml
+x-TZ:
+  &TZ
+  TZ: 'Asia/Tokyo'
+
 services:
   app:
     build:
-      context: .
-      dockerfile: ./Dockerfile
+      context: ${APP_ROOT}
+      dockerfile: Dockerfile
     init: true
-    user: vscode
+    user: ${APP_USER}
     environment:
-      LANG: ja_JP.UTF-8
-      TZ: Asia/Tokyo
-    working_dir: /app
+      LANG: ${APP_LANG}
+      <<: *TZ
     volumes:
       - .:/app
-    command: sleep infinity
