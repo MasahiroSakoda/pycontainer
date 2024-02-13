@@ -1,0 +1,45 @@
+// -*-mode:jsonc-*- vim:ft=jsonc
+{
+  "name": "python-devcontainer",
+  "dockerComposeFile": [
+    "../compose.yml",
+    ".devcontainer/compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "forwardPorts": [],
+  "remoteUser": "user",
+  "postAttachCommand": [],
+  "mounts": [
+    {
+      "type": "volume",
+      "source": "poetry-cache",
+      "target": "/home/user/.cache/pypoetry"
+    },
+    {
+      "type": "volume",
+      "source": "venv-cache",
+      "target": "${containerWorkspaceFolder}/.venv"
+    }
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/app/.venv/bin/python"
+      },
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/poetry": {
+      "version": "latest"
+    }
+  }
+  // "postAttachCommand": "sudo chown -R user /home/user/.cache/pypoetry ${containerWorkspaceFolder}/.venv && poetry config virtualenvs.in-project true && poetry install --no-interaction"
+}

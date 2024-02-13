@@ -25,13 +25,15 @@ RUN apt-get -y update \
 COPY ./pyproject.toml ./poetry.lock* ./
 RUN pip install --no-cache-dir --upgrade pip==${PIP_VERSION} \
  && pip install --no-cache-dir --upgrade poetry==${POETRY_VERSION} \
- && poetry config virtualenvs.create true --no-interaction \
- && poetry install
+ && poetry config virtualenvs.create true \
+ && poetry config virtualenvs.in-project true \
+ && poetry install \
+ && chown -R user ~/.cache/pypoetry /app/.venv
 
 # -- Build Stage for Local Development -----------
 FROM gcr.io/distroless/python3-debian12:debug
 WORKDIR /app
-COPY --from=builder /app .
+COPY --chown=user:user --from=builder /app .
 
 # -- Build Stage for Production -----------
 # FROM builder AS production

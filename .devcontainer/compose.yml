@@ -1,0 +1,4 @@
+# -*-mode:yaml-*- vim:ft=yaml
+services:
+  app:
+    command: sleep infinity
