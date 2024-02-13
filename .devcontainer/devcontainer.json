@@ -6,7 +6,7 @@
     ".devcontainer/compose.yml"
   ],
   "service": "app",
-  "workspaceFolder": "/pycontainer",
+  "workspaceFolder": "/app",
   "forwardPorts": [],
   "remoteUser": "user",
   "postAttachCommand": [],
