@@ -6,12 +6,14 @@ x-TZ:
 services:
   app:
     build:
-      context: ${APP_ROOT}
+      context: .
       dockerfile: Dockerfile
+    working_dir: /app
     init: true
-    user: ${APP_USER}
+    env_file: .env
     environment:
       LANG: ${APP_LANG}
       <<: *TZ
     volumes:
       - .:/app
+    command: sleep infinity
